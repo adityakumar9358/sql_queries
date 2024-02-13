@@ -1,0 +1,12 @@
+SELECT
+    B.Title,
+    A.AuthorName,
+    SUM(OI.Quantity) AS TotalSold
+FROM
+    Books B
+    JOIN OrderItems OI ON B.BookID = OI.BookID
+    JOIN Authors A ON B.AuthorID = A.AuthorID
+GROUP BY
+    B.Title, A.AuthorName
+ORDER BY
+    TotalSold DESC;
